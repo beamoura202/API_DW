@@ -1,0 +1,99 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+}
+.large-header{
+    position: relative;
+    width: 100%;
+    background: #111;
+    overflow-x: hidden;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+
+.demo .large-header{
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
+}
+
+.main{
+    position: absolute;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    padding: 0;
+    color: #f9f1e9;
+    text-align: center;
+    top:0%;
+    left: 0%;
+    height: 100%;
+    /*-webkit-transform: translate3d(-50%,-50%,0);
+    /*transform: translate(-50%,-50%,0);*/
+}
+.demo .main{
+    text-align: left;   
+    z-index: 2;
+
+}
+.titulo{
+    width: 60%;
+    top:60%;
+    position: relative;
+
+}
+
+
+.main .thin{
+    font-weight: 200;
+    text-transform: uppercase;
+    font-size: 4.2em;
+    letter-spacing: 0.1em;
+
+}
+.nomes{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.fctc{
+    width: 60%;
+    position: absolute;
+    padding: 0;
+    color: #f9f1e9;
+    text-align: center;
+    top:0%;
+    left: 0%;
+    font-size: 4.2em;
+
+    
+}
+.Beatriz{
+    position: absolute;
+    padding: 0;
+    color: #f9f1e9;
+    text-align: center;
+    top:0%;
+    left: 50%;
+    font-size: 4.2em;
+}
+.MDM{
+    position: absolute;
+    padding: 0;
+    color: #f9f1e9;
+    text-align: center;
+    top:0%;
+    right: 0%;
+    font-size: 4.2em;
+
+}
+
+
+@media only screen and (max-width: 768px){
+    .demo .main{
+        font-size: 3em;
+    }
+}
