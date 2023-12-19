@@ -19,10 +19,11 @@ body {
 }
 
 .main{
+    width: 90%;
     position: absolute;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
     padding: 0;
     color: #f9f1e9;
     text-align: center;
@@ -38,14 +39,14 @@ body {
 
 }
 .titulo{
-    width: 60%;
+    width: 80%;
     top:60%;
-    position: relative;
-
+position:absolute;
 }
 
 
 .main .thin{
+    
     font-weight: 200;
     text-transform: uppercase;
     font-size: 4.2em;
@@ -57,43 +58,211 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+
+    color: #FFF;
+    font-family: 'Geo', sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
     
 }
 .fctc{
     width: 60%;
     position: absolute;
-    padding: 0;
-    color: #f9f1e9;
+   
     text-align: center;
     top:0%;
     left: 0%;
-    font-size: 4.2em;
+    
 
     
 }
 .Beatriz{
     position: absolute;
-    padding: 0;
-    color: #f9f1e9;
+   
     text-align: center;
     top:0%;
     left: 50%;
-    font-size: 4.2em;
+    
 }
 .MDM{
     position: absolute;
     padding: 0;
-    color: #f9f1e9;
+   
     text-align: center;
     top:0%;
     right: 0%;
-    font-size: 4.2em;
+   
 
 }
 
 
 @media only screen and (max-width: 768px){
-    .demo .main{
-        font-size: 3em;
-    }
+
 }
+
+
+
+
+.navegação{
+    padding-left: 5%;
+    padding-right: 5%;
+    position: relative;
+    display: inline-flex;
+    width: 90%;
+    height: auto;
+    flex-shrink: 0;
+
+    border-radius: 7px;
+    background: rgba(0, 0, 0, 0.57);
+
+
+
+    color: #FFF;
+    font-family: 'Geo', sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.navegação button,input{
+
+    color: #FFF;
+    font-family: 'Geo', sans-serif;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    width: 157px;
+height: 27px;
+flex-shrink: 0;
+
+border: 1px solid rgba(255, 255, 255, 0.57);
+background-color: #111;
+}
+#formula{
+    display: inline-flex;
+    flex-direction: column;
+    margin: 40px;
+}
+#inicial{
+    display: grid;
+    margin-right: 20px;
+}
+
+#inicial input{
+    width: 157px;
+    height: 26px;
+    flex-shrink: 0;
+    background-color: #111;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.57);
+    margin-top: 10px;
+}
+
+#final{
+    display: grid;
+}
+
+#final input{
+    margin-top: 10px;
+    width: 157px;
+    height: 26px;
+    flex-shrink: 0;
+    background-color: #111;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.57);
+}
+#submete{
+    background-color: #111;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.57);
+   
+}
+#data{
+    display: inline-flex;
+    align-content: space-around;
+    margin-bottom: 15px;
+}
+
+#ordenar{
+    display: inline-flex;
+    flex-direction: column;
+    margin: 40px;
+}
+#ordenar label,button{
+    margin-bottom: 15px;
+}
+#filtrar{
+    margin: 30px;
+
+}
+#filtro{
+    display: grid;
+}
+
+#opçoes {
+    display: block;
+    margin-top: 15px;
+}
+#opçoes button{
+    margin-right: 20px;
+}
+
+
+
+
+#article-container{
+    position: relative;
+    width: 584px;
+    height: 102px;
+    flex-shrink: 0;
+
+    margin-top:5% ;
+    margin-bottom: 5%;
+
+}
+
+.main1{
+    position: relative;
+}
+.main2{
+    position: absolute;
+    top:90%;
+    width: 100%;
+}
+
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+
+.article {
+    position: relative;
+    margin-bottom: 40px; /* Optional: Add some space between articles */
+    width: 90vw;
+    display: grid;
+    justify-items: end;
+
+  }
+  
+
+  
+  .imagem {
+    position: relative;
+    width: 70vw;
+
+  }
+  
+  .textoArtic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    width: 50vw;
+  }

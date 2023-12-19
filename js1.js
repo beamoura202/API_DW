@@ -58,10 +58,24 @@ function displayRandomImages(number) {
     selectedArticles.forEach((article) => {
         const articleDiv = document.createElement("div");
         articleDiv.innerHTML = 
-            `<h2>${article.title}</h2>
-            <h3>Date: <span>${article.date}</span></h3>
-            <img src="${article.hdurl}" alt="${article.title}" width="100%">
-            <p>${article.explanation}</p>`;
+        
+            `<article class="article">
+                
+            <div class="imagem">
+                <img src="${article.hdurl}" alt="${article.title}" width="100%">
+            </div>
+            
+            <div class="textoArtic">
+                <h2>${article.title}</h2>
+                <h3>Date: <span>${article.date}</span></h3>
+                <p>${article.explanation}</p>
+            </div>
+
+        </article>
+            
+            
+            
+            `;
         articleContainer.appendChild(articleDiv);
     });
 }
@@ -124,10 +138,25 @@ function updatePage() {
         articles.forEach((article) => {
             const articleDiv = document.createElement("div");
             articleDiv.innerHTML = 
-                `<h2>${article.title}</h2>
-                <h3>Date: <span>${article.date}</span></h3>
-                <img src="${article.hdurl}" alt="${article.title}" width="100%">
-                <p>${article.explanation}</p>`;
+            `<article class="article">
+                
+                <div class="imagem">
+                    <img src="${article.hdurl}" alt="${article.title}" width="100%">
+                </div>
+                
+                <div class="textoArtic">
+                    <h2>${article.title}</h2>
+                    <h3>Date: <span>${article.date}</span></h3>
+                    <p>${article.explanation}</p>
+                </div>
+
+            </article>
+                
+                
+                
+                `;
+
+
             articleContainer.appendChild(articleDiv);
         });
     } else {
