@@ -168,3 +168,16 @@ function displayError(message) {
     const articleContainer = document.getElementById("article-container");
     articleContainer.innerHTML = `<p class="error-message">${message}</p>`;
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const navigation = document.querySelector('.navegação');
+    const toggleButton = document.getElementById('toggleButton');
+  
+    toggleButton.addEventListener('click', function () {
+      navigation.classList.toggle('open');
+    });
+  });
+  
