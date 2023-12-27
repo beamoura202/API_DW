@@ -281,12 +281,7 @@ background-color: #111;
 }
 
 
-  
-  .imagem {
-    position: relative;
-    width: 60vw;
 
-  }
   
 
       /* Base Styles for Articles */
@@ -300,6 +295,20 @@ background-color: #111;
         width: 90vw;
         display: grid;
     }
+    /* Base Styles for Text */
+.textoArticBase {
+    position: absolute;
+    top: 0;
+    width: 50vw; /* Removed duplicate width property */
+    z-index: 4;
+    
+}
+ 
+.imagem {
+    position: relative;
+    width: 60vw;
+
+  }
         
      
 }
@@ -313,6 +322,20 @@ background-color: #111;
         height: 80vh;
         display: grid;
     }
+    /* Base Styles for Text */
+.textoArticBase {
+    position: absolute;
+    top: 0;
+    width: 50vw; /* Removed duplicate width property */
+    z-index: 4;
+    
+}
+ 
+.imagem {
+    position: relative;
+    width: 60vw;
+
+  }
     
  
 }
@@ -324,7 +347,6 @@ background-color: #111;
         position: relative;
         margin-bottom: 40px; 
         width: 90vw;
-        height: 120vh;
         display: grid;
     }
        
@@ -332,10 +354,22 @@ background-color: #111;
         font-family: 'Zen Dots';
         font-weight: 200;
         text-transform: uppercase;
-        font-size: 3em;
+        font-size: 2.5em;
         letter-spacing: 0.1em;
     }
+    .textoArticBase {
+        position: relative;
+        top: 0;
+        width: 90vw; /* Removed duplicate width property */
+        z-index: 4;
+        
+    } 
      
+  .imagem {
+    position: relative;
+    width: 90vw;
+
+  }   
 }
 
 
@@ -350,14 +384,7 @@ background-color: #111;
     justify-items: start;
 }
 
-/* Base Styles for Text */
-.textoArticBase {
-    position: absolute;
-    top: 0;
-    width: 50vw; /* Removed duplicate width property */
-    z-index: 4;
-    
-}
+
 
 /* Modifier for Par Text */
 .textoArticEven {
