@@ -4,6 +4,10 @@ var api_key = "uchmIemEXq0Q0VhKvfIbdBd0yoLYDfCoTWmtBF4K";
 var articles = [];
 
 window.addEventListener("DOMContentLoaded", function () {
+    //ainda nao funciona
+    displayInitialMessage();
+     // Fetch the last 5 images as soon as the page loads
+     fetchLastFiveImages();
 
 //botoes de filtragem
 //5imagens random
@@ -46,6 +50,49 @@ window.addEventListener("DOMContentLoaded", function () {
         updatePage();
     });
 });
+//apresenta inicialmente as 5 ultimaz imagens da API
+function fetchLastFiveImages() {
+    const today = new Date();
+    const dates = [];
+
+    for (let i = 0; i < 5; i++) {
+        const date = new Date();
+        date.setDate(today.getDate() - i);
+        dates.push(formatDate(date));
+    }
+    fetchArticlesWithDates(dates);
+}
+
+function formatDate(date) {
+    return date.toISOString().split('T')[0];
+}
+//ainda n funciona
+function displayInitialMessage() {
+    var articleContainer = document.getElementById("article-container");
+    if (articleContainer) {
+        var header = document.createElement('h1');
+        header.textContent = "Últimas 5 fotos";
+        articleContainer.appendChild(header);
+    } else {
+        console.error("Article container not found");
+    }
+}
+function fetchArticlesWithDates(dates) {
+    articles = [];
+    dates.forEach((date) => {
+        let apiUrl = url + api_key + `&date=${date}`;
+        req.open("GET", apiUrl, false); // Synchronous request
+        req.send();
+
+        req.onreadystatechange = function () {
+            if (req.readyState === 4 && req.status === 200) {
+                var response = JSON.parse(req.responseText);
+                articles.push(response);
+                updatePage(); // Update the page with each new image
+            }
+        };
+    });
+}
 
 //Filtragem 5,10,15,20, das imagens de forma random
 function displayRandomImages(number) {
@@ -55,27 +102,29 @@ function displayRandomImages(number) {
     const articleContainer = document.getElementById("article-container");
     articleContainer.innerHTML = ""; // Clear existing content
 
-    selectedArticles.forEach((article) => {
+    selectedArticles.forEach((article, index) => {
         const articleDiv = document.createElement("div");
-        articleDiv.innerHTML = 
-        
-            `<article class="article">
-                
-            <div class="imagem">
-                <img src="${article.hdurl}" alt="${article.title}" width="100%">
-            </div>
-            
-            <div class="textoArtic">
-                <h2>${article.title}</h2>
-                <h3>Date: <span>${article.date}</span></h3>
-                <p>${article.explanation}</p>
-            </div>
 
-        </article>
-            
-            
-            
+        // Add base and modifier classes
+        articleDiv.classList.add("articleBase");
+        articleDiv.classList.add(index % 2 === 0 ? "articleEven" : "articleOdd");
+
+
+       articleDiv.innerHTML = `
+                <div class="imagem">
+                    <img src="${article.hdurl}" alt="${article.title}" width="100%">
+                </div>
+                
+                <div class="${index % 2 === 0 ? 'textoArticBase textoArticEven' : 'textoArticBase textoArticOdd'}">
+                    <h2>${article.title}</h2>
+                    <h3>Date: <span>${article.date}</span></h3>
+                    <p>${article.explanation}</p>
+                </div>
+                
             `;
+            
+            
+            
         articleContainer.appendChild(articleDiv);
     });
 }
@@ -132,36 +181,29 @@ function sortArticles(sortOrder) {
 //enviar a info para os artigos
 function updatePage() {
     const articleContainer = document.getElementById("article-container");
-    articleContainer.innerHTML = "";
+    articleContainer.innerHTML = ""; // Clear existing content
 
-    if (Array.isArray(articles) && articles.length > 0) {
-        articles.forEach((article) => {
+   
+        articles.forEach((article, index) => {
             const articleDiv = document.createElement("div");
-            articleDiv.innerHTML = 
-            `<article class="article">
-                
+
+            // Add base and modifier classes
+            articleDiv.classList.add("articleBase");
+            articleDiv.classList.add(index % 2 === 0 ? "articleEven" : "articleOdd");
+
+            articleDiv.innerHTML = `
                 <div class="imagem">
                     <img src="${article.hdurl}" alt="${article.title}" width="100%">
                 </div>
-                
-                <div class="textoArtic">
+                <div class="${index % 2 === 0 ? 'textoArticBase textoArticEven' : 'textoArticBase textoArticOdd'}">
                     <h2>${article.title}</h2>
                     <h3>Date: <span>${article.date}</span></h3>
                     <p>${article.explanation}</p>
                 </div>
-
-            </article>
-                
-                
-                
-                `;
-
-
+            `;
             articleContainer.appendChild(articleDiv);
         });
-    } else {
-        console.error('Empty or invalid API response.');
-    }
+   
 }
 //erros
 function displayError(message) {
@@ -180,4 +222,3 @@ document.addEventListener('DOMContentLoaded', function () {
       navigation.classList.toggle('open');
     });
   });
-  

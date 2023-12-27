@@ -104,8 +104,8 @@ position:relative;
         flex-wrap: wrap;
     }
     
+    
 }
-
 
 
 
@@ -281,16 +281,6 @@ background-color: #111;
 }
 
 
-.article {
-    position: relative;
-    margin-bottom: 40px; /* Optional: Add some space between articles */
-    width: 90vw;
-    display: grid;
-    justify-items: end;
-
-  }
-  
-
   
   .imagem {
     position: relative;
@@ -298,27 +288,101 @@ background-color: #111;
 
   }
   
-  .textoArtic {
+
+      /* Base Styles for Articles */
+      /*computador*/
+@media only screen and (min-width:1020px){
+   
+
+    .articleBase {
+        position: relative;
+        margin-bottom: 40px; 
+        width: 90vw;
+        display: grid;
+    }
+        
+     
+}
+/*tablet*/
+@media only screen and (min-width:768px) and (max-width:1020px){
+   
+    .articleBase {
+        position: relative;
+        margin-bottom: 40px; 
+        width: 90vw;
+        height: 80vh;
+        display: grid;
+    }
     
-    margin-left: 10%;
+ 
+}
+/*telemovel*/
+@media only screen and (max-width:768px){
+   
+
+    .articleBase {
+        position: relative;
+        margin-bottom: 40px; 
+        width: 90vw;
+        height: 120vh;
+        display: grid;
+    }
+       
+    .main .thin {
+        font-family: 'Zen Dots';
+        font-weight: 200;
+        text-transform: uppercase;
+        font-size: 3em;
+        letter-spacing: 0.1em;
+    }
+     
+}
+
+
+
+/* Modifier for Par Articles */
+.articleEven {
+    justify-items: end;
+}
+
+/* Modifier for Impar Articles */
+.articleOdd {
+    justify-items: start;
+}
+
+/* Base Styles for Text */
+.textoArticBase {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    width: 50vw; /* Removed duplicate width property */
     z-index: 4;
-    width: 50vw;
-  }
+    
+}
 
-  .textoArtic h2{
-font: 3em Geo;
-  }
-  .textoArtic h3{
+/* Modifier for Par Text */
+.textoArticEven {
+    margin-left: 10%;
+    left: 0;
+}
+
+/* Modifier for Impar Text */
+.textoArticOdd {
+    margin-right: 10%;
+    right: 0;
+}
+
+.textoArticBase h2 {
+    font: 3em Geo;
+}
+
+.textoArticBase h3 {
     font: 2em Geo;
     margin-top: 0;
     margin-bottom: 0;
-      }
-      .textoArtic p{
-        font:1.1em Lexend;
-        color:#f9f1e9ae
-      }
-    
+}
+
+.textoArticBase p {
+    font: 1.1em Lexend;
+    color: #f9f1e9ae;
+}
+
