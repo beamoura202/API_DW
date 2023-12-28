@@ -11,19 +11,19 @@
     
     <script src="js1.js"></script>
 
-    <title>Animation Background</title>
+    <title>NASA Astronomy Pictures Of The Day</title>
 
 </head>
 <body>
      
-    <!--fundo-->
 <div class="container demo">
     <div class="container">
         <div id="large-header" class="large-header">
+            <!------fundo------------------>
             <canvas id="demo-canvas"></canvas>
 
             <div class="main">
-
+                <!--Primeira parte do site-->
                 <div id="main1">
 
                 <div class="nomes">
@@ -32,15 +32,15 @@
                     <p id="MDM">MDM</p>
                 </div>
 
-                
+ <!--segunda parte do site-->               
 <div class="main2">
     <div class="titulo">
         <span class="thin">NASA Astronomy Pictures Of The Day</span>
     </div>
-                <button id="toggleButton">Pesquisar</button>
-
+                <button id="toggleButton">Search</button>
+                <!--Sistema de filtragem e pesquisa-->
                 <section class="navegação">
-
+                    <!--Pesquisa por formulário, data inicial e final-->
                     <form id="formula">
                         <div id="data">
                             <div id="inicial">
@@ -52,17 +52,18 @@
                                 <input name="end-date" type="text" id="end-date" placeholder="YYYY-MM-DD">
                             </div>
                         </div>
-                        <input id="submete" type="submit" id="submit">
+                        <input type="submit" id="submit" id="submete" value="Send">
+                        
                     </form>
 
 
-
+                    <!--Ordenação Ascendente e Descendente da data-->
                     <form id="ordenar">
                         <label for="order">Order:</label>
                         <button type="button" id="asc-button">ASC</button>
                         <button type="button" id="desc-button">DESC</button>
                     </form>
-                
+                    <!--Filtragem por numero de artigos a serem exibidos, dentro do intervalo inserido-->
                     <form id="filtrar">
                         <div id="filtro">
                         <label for="filtrar">Filter:</label>
@@ -76,29 +77,18 @@
                     </form>
 
                 </section>
-
+                <!--Artigos inseridos por js-->
                 <section id="article-container">
 
                 </section>
 
-
-
-
-
             </div>
-
-                
-
-
-
-
-
 
             </div>
         </div>
     </div>
 </div>
-
+<!--Para a animação inicial-->
 <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
 <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
 <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo.js"></script>

@@ -6,30 +6,31 @@ var articles = [];
 window.addEventListener("DOMContentLoaded", function () {
     //ainda nao funciona
     displayInitialMessage();
-     // Fetch the last 5 images as soon as the page loads
-     fetchLastFiveImages();
 
-//botoes de filtragem
-//5imagens random
+    // faz Fetch das 5 imagens assim que a pagina é loaded
+    fetchLastFiveImages();
+
+    //botoes de filtragem
+    //5imagens random
     document.getElementById('5img').addEventListener('click', function () {
         displayRandomImages(5);
     });
-//10imagens random
+    //10imagens random
     document.getElementById('10img').addEventListener('click', function () {
         displayRandomImages(10);
     });
-//15imagens random
+    //15imagens random
     document.getElementById('15img').addEventListener('click', function () {
         displayRandomImages(15);
     });
-//20imagens random
+    //20imagens random
     document.getElementById('20img').addEventListener('click', function () {
         displayRandomImages(20);
 
     });
 
 
-//formulario data
+    //formulario data
     document.getElementById('formula').addEventListener('submit', function (event) {
         event.preventDefault();
         const formData = new FormData(event.target);
@@ -37,7 +38,7 @@ window.addEventListener("DOMContentLoaded", function () {
         const end_date = formData.get('end-date');
         fetchArticlesWithOrder(start_date, end_date);
     });
-//filtragem por asc e desc
+    //filtragem por asc e desc
     document.getElementById('asc-button').addEventListener('click', function (event) {
         event.preventDefault();
         sortArticles('ASC');
@@ -50,7 +51,7 @@ window.addEventListener("DOMContentLoaded", function () {
         updatePage();
     });
 });
-//apresenta inicialmente as 5 ultimaz imagens da API
+//apresenta inicialmente as 5 ultimas imagens da API
 function fetchLastFiveImages() {
     const today = new Date();
     const dates = [];
@@ -64,7 +65,7 @@ function fetchLastFiveImages() {
 }
 
 function formatDate(date) {
-    return date.toISOString().split('T')[0];
+    return date.toISOString().split('T')[0];// Output: 'YYYY-MM-DD' formato ISO 8601
 }
 //ainda n funciona
 function displayInitialMessage() {
@@ -77,18 +78,19 @@ function displayInitialMessage() {
         console.error("Article container not found");
     }
 }
+
 function fetchArticlesWithDates(dates) {
     articles = [];
     dates.forEach((date) => {
         let apiUrl = url + api_key + `&date=${date}`;
-        req.open("GET", apiUrl, false); // Synchronous request
+        req.open("GET", apiUrl, false); //Solicitação síncrona
         req.send();
 
         req.onreadystatechange = function () {
             if (req.readyState === 4 && req.status === 200) {
                 var response = JSON.parse(req.responseText);
                 articles.push(response);
-                updatePage(); // Update the page with each new image
+                updatePage(); //Atualize a página com cada nova imagem
             }
         };
     });
@@ -96,35 +98,35 @@ function fetchArticlesWithDates(dates) {
 
 //Filtragem 5,10,15,20, das imagens de forma random
 function displayRandomImages(number) {
-    const shuffledArticles = articles.sort(() => 0.5 - Math.random()); // Shuffle the array
-    const selectedArticles = shuffledArticles.slice(0, number); // Select the specified number of images
+    const shuffledArticles = articles.sort(() => 0.5 - Math.random()); // sort 
+    const selectedArticles = shuffledArticles.slice(0, number); // seleciona um numero especifico pedido, 
 
     const articleContainer = document.getElementById("article-container");
-    articleContainer.innerHTML = ""; // Clear existing content
+    articleContainer.innerHTML = ""; // Limpa o conteudo existente
 
     selectedArticles.forEach((article, index) => {
         const articleDiv = document.createElement("div");
 
-        // Add base and modifier classes
+        // Adiciona a classe base e depois de acordo se é par ou impar adiciona as respetovas classes
         articleDiv.classList.add("articleBase");
-        articleDiv.classList.add(index % 2 === 0 ? "articleEven" : "articleOdd");
+        articleDiv.classList.add(index % 2 === 0 ? "articlePar" : "articleImpar");
 
 
-       articleDiv.innerHTML = `
+        articleDiv.innerHTML = `
                 <div class="imagem">
                     <img src="${article.hdurl}" alt="${article.title}" width="100%">
                 </div>
                 
-                <div class="${index % 2 === 0 ? 'textoArticBase textoArticEven' : 'textoArticBase textoArticOdd'}">
+                <div class="${index % 2 === 0 ? 'textoArticBase textoArticPar' : 'textoArticBase textoArticImpar'}">
                     <h2>${article.title}</h2>
                     <h3>Date: <span>${article.date}</span></h3>
                     <p>${article.explanation}</p>
                 </div>
                 
             `;
-            
-            
-            
+
+
+
         articleContainer.appendChild(articleDiv);
     });
 }
@@ -138,7 +140,7 @@ function fetchArticlesWithOrder(start_date, end_date, sortOrder) {
 
         if (startDate > endDate) {
             displayError('Start date must be before end date.');
-            return; // Stop the function if dates are invalid
+            return; // para se a data final for menor que a inicial
         }
 
         let apiUrl = url + api_key + `&start_date=${start_date}&end_date=${end_date}`;
@@ -155,21 +157,20 @@ function fetchArticlesWithOrder(start_date, end_date, sortOrder) {
                 if (Array.isArray(response)) {
                     articles = response;
                     if (sortOrder) {
+                        //ordena asc ou des
                         sortArticles(sortOrder);
                     }
                     updatePage();
                 } else {
                     console.error('Invalid API response: Expected an array');
                 }
-            } else {
-                console.error('API Request Failed:', req.status, req.statusText);
             }
         });
     } else {
         displayError('Please provide both start and end dates.');
     }
 }
-
+//ordena asc ou des
 function sortArticles(sortOrder) {
     articles.sort((a, b) => {
         const dateA = new Date(a.date);
@@ -178,32 +179,32 @@ function sortArticles(sortOrder) {
     });
 }
 
-//enviar a info para os artigos
+//enviar a info de cada artigo para o html
 function updatePage() {
     const articleContainer = document.getElementById("article-container");
-    articleContainer.innerHTML = ""; // Clear existing content
+    articleContainer.innerHTML = "";
 
-   
-        articles.forEach((article, index) => {
-            const articleDiv = document.createElement("div");
 
-            // Add base and modifier classes
-            articleDiv.classList.add("articleBase");
-            articleDiv.classList.add(index % 2 === 0 ? "articleEven" : "articleOdd");
+    articles.forEach((article, index) => {
+        const articleDiv = document.createElement("div");
 
-            articleDiv.innerHTML = `
+        // Adiciona a classe base e depois de acordo se é par ou impar adiciona as respetovas classes
+        articleDiv.classList.add("articleBase");
+        articleDiv.classList.add(index % 2 === 0 ? "articlePar" : "articleImpar");
+
+        articleDiv.innerHTML = `
                 <div class="imagem">
                     <img src="${article.hdurl}" alt="${article.title}" width="100%">
                 </div>
-                <div class="${index % 2 === 0 ? 'textoArticBase textoArticEven' : 'textoArticBase textoArticOdd'}">
+                <div class="${index % 2 === 0 ? 'textoArticBase textoArticPar' : 'textoArticBase textoArticImpar'}">
                     <h2>${article.title}</h2>
                     <h3>Date: <span>${article.date}</span></h3>
                     <p>${article.explanation}</p>
                 </div>
             `;
-            articleContainer.appendChild(articleDiv);
-        });
-   
+        articleContainer.appendChild(articleDiv);
+    });
+
 }
 //erros
 function displayError(message) {
@@ -213,12 +214,12 @@ function displayError(message) {
 
 
 
-
+//abre e fecha a navegação
 document.addEventListener('DOMContentLoaded', function () {
     const navigation = document.querySelector('.navegação');
     const toggleButton = document.getElementById('toggleButton');
-  
+
     toggleButton.addEventListener('click', function () {
-      navigation.classList.toggle('open');
+        navigation.classList.toggle('open');
     });
-  });
+});

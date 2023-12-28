@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #111;
 }
+/*---------------------------Primeira parte do site----------------*/
 .large-header{
     position: relative;
     width: 100%;
@@ -13,7 +14,7 @@ body {
     background-position: center center;
     z-index: 1;
 }
-
+/*Fundo*/
 .demo .large-header{
     background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
 }
@@ -41,7 +42,7 @@ body {
 .titulo{
     width: 80%;
     top:0%;
-position:relative;
+    position:relative;
 }
 
 
@@ -97,17 +98,13 @@ position:relative;
    
 
 }
-
-
+/*-------------------------------------Pesquisa-----------------------*/
+/*responsividade da secção de pesquisa*/
 @media only screen and (max-width: 1010px){
     .navegação{
         flex-wrap: wrap;
-    }
-    
-    
+    }  
 }
-
-
 
 .navegação{
     padding-left: 5%;
@@ -129,13 +126,14 @@ position:relative;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    justify-content: space-evenly;
     
     height: 0;
-  overflow: hidden;
-  transition: height 0.3s ease; /* adjust the duration and timing function as needed */
+    overflow: hidden;
+    transition: height 0.3s ease; /* ajusta o tempo de duração*/
 }
 .navegação.open {
-    height: auto; /* or specify the desired height when open */
+    height: auto;
 
   }
 #toggleButton{
@@ -221,11 +219,7 @@ background-color: #111;
     border: 1px solid rgba(255, 255, 255, 0.57);
    
 }
-#data{
-    display: inline-flex;
-    align-content: space-around;
-    margin-bottom: 15px;
-}
+
 
 #ordenar{
     display: inline-flex;
@@ -252,8 +246,7 @@ background-color: #111;
 }
 
 
-
-
+/*---------------------------------Artigos(imagem e textos)------------------*/
 #article-container{
     position: relative;
     width: 584px;
@@ -274,41 +267,40 @@ background-color: #111;
     width: 100%;
 }
 
-
 .error-message {
     color: red;
     font-weight: bold;
 }
 
-
-
-  
-
-      /* Base Styles for Articles */
       /*computador*/
 @media only screen and (min-width:1020px){
    
-
     .articleBase {
         position: relative;
         margin-bottom: 40px; 
         width: 90vw;
         display: grid;
     }
-    /* Base Styles for Text */
-.textoArticBase {
+   
+    .textoArticBase {
     position: absolute;
     top: 0;
-    width: 50vw; /* Removed duplicate width property */
+    width: 50vw; 
     z-index: 4;
     
-}
+    }
  
-.imagem {
+    .imagem {
     position: relative;
     width: 60vw;
 
   }
+  #data{
+    display: inline-flex;
+    align-content: space-around;
+    margin-bottom: 15px;
+   
+}
         
      
 }
@@ -322,11 +314,11 @@ background-color: #111;
         height: 80vh;
         display: grid;
     }
-    /* Base Styles for Text */
+   
 .textoArticBase {
     position: absolute;
     top: 0;
-    width: 50vw; /* Removed duplicate width property */
+    width: 50vw; 
     z-index: 4;
     
 }
@@ -336,7 +328,12 @@ background-color: #111;
     width: 60vw;
 
   }
+  #data{
+    display: inline-flex;
+    align-content: space-around;
+    margin-bottom: 15px;
     
+}
  
 }
 /*telemovel*/
@@ -360,7 +357,7 @@ background-color: #111;
     .textoArticBase {
         position: relative;
         top: 0;
-        width: 90vw; /* Removed duplicate width property */
+        width: 90vw; 
         z-index: 4;
         
     } 
@@ -369,31 +366,36 @@ background-color: #111;
     position: relative;
     width: 90vw;
 
-  }   
+  }  
+  #data{
+    display: inline-flex;
+    align-content: space-around;
+    margin-bottom: 15px;
+    flex-direction: column;
+} 
 }
 
 
 
-/* Modifier for Par Articles */
-.articleEven {
+/* muda se for um artigo Par  */
+.articlePar {
     justify-items: end;
 }
 
-/* Modifier for Impar Articles */
-.articleOdd {
+/* muda se for um artigo Impar  */
+.articleImpar {
     justify-items: start;
 }
 
 
-
-/* Modifier for Par Text */
-.textoArticEven {
+/* muda se for um artigo Par */
+.textoArticPar {
     margin-left: 10%;
     left: 0;
 }
 
-/* Modifier for Impar Text */
-.textoArticOdd {
+/* muda se for um artigo Impar  */
+.textoArticImpar {
     margin-right: 10%;
     right: 0;
 }
