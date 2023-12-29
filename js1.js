@@ -125,8 +125,6 @@ function displayRandomImages(number) {
                 
             `;
 
-
-
         articleContainer.appendChild(articleDiv);
     });
 }
